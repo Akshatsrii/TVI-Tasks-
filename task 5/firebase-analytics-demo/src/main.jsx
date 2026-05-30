@@ -1,6 +1,3 @@
-// src/main.jsx
-// Entry point — mounts React app to DOM
-
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
