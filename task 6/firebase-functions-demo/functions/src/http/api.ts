@@ -135,4 +135,4 @@ export const getUserData = onCall(async (request) => {
     uid,
     ...(doc.data() as Omit<UserRecord, "id">),
   };
-});
+});           
