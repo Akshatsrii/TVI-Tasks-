@@ -8,32 +8,46 @@ import {
 
 import {
   auth,
-  db
+  db,
+  analytics
 } from "../firebase";
+
+import {
+  logEvent
+} from "firebase/analytics";
 
 function SendMessage() {
 
-  const [text, setText] = useState("");
+  const [text, setText] =
+    useState("");
 
-  const sendMessage = async (e) => {
+  const sendMessage =
+    async (e) => {
 
-    e.preventDefault();
+      e.preventDefault();
 
-    if (!text.trim()) return;
+      if (!text.trim()) return;
 
-    await addDoc(
-      collection(db, "messages"),
-      {
-        text,
-        uid: auth.currentUser.uid,
-        name: auth.currentUser.displayName,
-        photoURL: auth.currentUser.photoURL,
-        timestamp: serverTimestamp()
-      }
-    );
+      await addDoc(
+        collection(db, "messages"),
+        {
+          text,
+          uid: auth.currentUser.uid,
+          name: auth.currentUser.displayName,
+          photoURL:
+            auth.currentUser.photoURL,
+          timestamp:
+            serverTimestamp()
+        }
+      );
 
-    setText("");
-  };
+      logEvent(
+        analytics,
+        "message_sent"
+      );
+
+      setText("");
+    };
 
   return (
     <form onSubmit={sendMessage}>
