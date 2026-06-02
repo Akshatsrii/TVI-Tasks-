@@ -35,9 +35,7 @@ function ChatRoom() {
     <div>
 
       <button
-        onClick={() =>
-          signOut(auth)
-        }
+        onClick={() => signOut(auth)}
       >
         Logout
       </button>
