@@ -22,25 +22,34 @@ import SendMessage from "./SendMessage";
 import UploadImage from "./UploadImage";
 
 function ChatRoom() {
-
   const q = query(
     collection(db, "messages"),
     orderBy("timestamp")
   );
 
-  const [messages] =
-    useCollection(q);
+  const [messages, loading] = useCollection(q);
 
   return (
-    <div>
+    <div className="chatroom-container">
 
-      <button
-        onClick={() => signOut(auth)}
-      >
-        Logout
-      </button>
+      <div className="chatroom-header">
+        <h2>💬 Firebase Chat</h2>
+
+        <button
+          className="logout-btn"
+          onClick={() => signOut(auth)}
+        >
+          Logout
+        </button>
+      </div>
 
       <div className="chat">
+
+        {loading && (
+          <p className="loading">
+            Loading messages...
+          </p>
+        )}
 
         {messages?.docs.map((doc) => (
           <Message
@@ -51,9 +60,10 @@ function ChatRoom() {
 
       </div>
 
-      <UploadImage />
-
-      <SendMessage />
+      <div className="chat-actions">
+        <UploadImage />
+        <SendMessage />
+      </div>
 
     </div>
   );
