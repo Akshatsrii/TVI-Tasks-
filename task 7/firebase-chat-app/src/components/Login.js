@@ -6,14 +6,21 @@ import {
 import { auth } from "../firebase";
 
 function Login() {
-  const signIn = async () => {
-    const provider = new GoogleAuthProvider();
-    await signInWithPopup(auth, provider);
+
+  const login = async () => {
+
+    const provider =
+      new GoogleAuthProvider();
+
+    await signInWithPopup(
+      auth,
+      provider
+    );
   };
 
   return (
-    <div>
-      <button onClick={signIn}>
+    <div className="center">
+      <button onClick={login}>
         Login With Google
       </button>
     </div>
