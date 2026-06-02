@@ -18,51 +18,48 @@ import {
 
 function UploadImage() {
 
-  const upload =
-    async (e) => {
+  const upload = async (e) => {
+    const file = e.target.files[0];
 
-      const file =
-        e.target.files[0];
+    if (!file) return;
 
-      if (!file) return;
-
+    try {
       const imageRef = ref(
         storage,
         `chat-images/${Date.now()}-${file.name}`
       );
 
-      await uploadBytes(
-        imageRef,
-        file
-      );
+      await uploadBytes(imageRef, file);
 
-      const url =
-        await getDownloadURL(
-          imageRef
-        );
+      const url = await getDownloadURL(
+        imageRef
+      );
 
       await addDoc(
         collection(db, "messages"),
         {
           imageUrl: url,
-          uid:
-            auth.currentUser.uid,
-          name:
-            auth.currentUser.displayName,
-          photoURL:
-            auth.currentUser.photoURL,
-          timestamp:
-            serverTimestamp()
+          uid: auth.currentUser.uid,
+          name: auth.currentUser.displayName,
+          photoURL: auth.currentUser.photoURL,
+          timestamp: serverTimestamp()
         }
       );
-    };
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <input
-      type="file"
-      accept="image/*"
-      onChange={upload}
-    />
+    <label className="upload-btn">
+      📷 Upload
+      <input
+        type="file"
+        accept="image/*"
+        onChange={upload}
+        hidden
+      />
+    </label>
   );
 }
 
