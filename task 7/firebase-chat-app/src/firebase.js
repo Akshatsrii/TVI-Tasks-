@@ -5,16 +5,14 @@ import { getStorage } from "firebase/storage";
 import { getMessaging } from "firebase/messaging";
 import { getAnalytics } from "firebase/analytics";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAxqDkZKyNGi1Ui2d4x8Z--mOW3EorMJ0A",
-  authDomain: "fir-chat-app-6da18.firebaseapp.com",
-  projectId: "fir-chat-app-6da18",
-  storageBucket: "fir-chat-app-6da18.firebasestorage.app",
-  messagingSenderId: "865469829594",
-  appId: "1:865469829594:web:49d0f2e2559e880ab6f0e3",
-  measurementId: "G-E7GV5600Z9"
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID",
+  measurementId: "YOUR_MEASUREMENT_ID"
 };
 
 const app = initializeApp(firebaseConfig);
