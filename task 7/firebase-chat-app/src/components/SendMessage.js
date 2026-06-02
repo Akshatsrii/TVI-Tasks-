@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import {
   addDoc,
   collection,
@@ -17,53 +16,51 @@ import {
 } from "firebase/analytics";
 
 function SendMessage() {
+  const [text, setText] = useState("");
 
-  const [text, setText] =
-    useState("");
+  const sendMessage = async (e) => {
+    e.preventDefault();
 
-  const sendMessage =
-    async (e) => {
+    if (!text.trim()) return;
 
-      e.preventDefault();
+    await addDoc(
+      collection(db, "messages"),
+      {
+        text,
+        uid: auth.currentUser.uid,
+        name: auth.currentUser.displayName,
+        photoURL: auth.currentUser.photoURL,
+        timestamp: serverTimestamp()
+      }
+    );
 
-      if (!text.trim()) return;
+    if (analytics) {
+      logEvent(analytics, "message_sent");
+    }
 
-      await addDoc(
-        collection(db, "messages"),
-        {
-          text,
-          uid: auth.currentUser.uid,
-          name: auth.currentUser.displayName,
-          photoURL:
-            auth.currentUser.photoURL,
-          timestamp:
-            serverTimestamp()
-        }
-      );
-
-      logEvent(
-        analytics,
-        "message_sent"
-      );
-
-      setText("");
-    };
+    setText("");
+  };
 
   return (
-    <form onSubmit={sendMessage}>
-
+    <form
+      onSubmit={sendMessage}
+      className="send-form"
+    >
       <input
+        className="message-input"
         value={text}
         onChange={(e) =>
           setText(e.target.value)
         }
-        placeholder="Message"
+        placeholder="Type your message..."
       />
 
-      <button type="submit">
-        Send
+      <button
+        className="send-btn"
+        type="submit"
+      >
+        ➤
       </button>
-
     </form>
   );
 }
