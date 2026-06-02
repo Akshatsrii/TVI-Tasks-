@@ -90,3 +90,21 @@ cursor:pointer;
   max-width: 100%;
   border-radius: 12px;
 }
+
+.upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #dcfce7;
+  color: #15803d;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 10px;
+}
+
+.upload-btn:hover {
+  background: #bbf7d0;
+}
