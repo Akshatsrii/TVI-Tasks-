@@ -1,29 +1,33 @@
 function Message({ message }) {
-
   return (
     <div className="message">
 
       <img
-        src={message.photoURL}
-        alt=""
-        width="40"
+        className="avatar"
+        src={
+          message.photoURL ||
+          "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+        }
+        alt={message.name}
       />
 
-      <div>
+      <div className="message-content">
 
-        <strong>
+        <strong className="username">
           {message.name}
         </strong>
 
         {message.text && (
-          <p>{message.text}</p>
+          <p className="message-text">
+            {message.text}
+          </p>
         )}
 
         {message.imageUrl && (
           <img
+            className="message-image"
             src={message.imageUrl}
-            alt=""
-            width="200"
+            alt="uploaded"
           />
         )}
 
