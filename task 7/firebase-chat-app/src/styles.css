@@ -48,3 +48,45 @@ button{
 padding:10px 15px;
 cursor:pointer;
 }
+
+.message {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4ade80;
+}
+
+.message-content {
+  background: white;
+  padding: 12px 15px;
+  border-radius: 15px;
+  max-width: 70%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.username {
+  color: #16a34a;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.message-text {
+  margin: 0;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.message-image {
+  margin-top: 10px;
+  width: 250px;
+  max-width: 100%;
+  border-radius: 12px;
+}
