@@ -1,0 +1,35 @@
+/* src/index.css — Global reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: 'Syne', sans-serif;
+  line-height: 1.6;
+  color-scheme: dark;
+  background: #0a0a0f;
+  color: #e8e8f0;
+}
+
+body {
+  min-height: 100vh;
+  background: #0a0a0f;
+}
+
+code {
+  font-family: 'Space Mono', monospace;
+  background: rgba(255, 100, 0, 0.15);
+  color: #ff8c42;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  outline: none;
+}
